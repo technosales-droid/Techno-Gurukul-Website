@@ -1,0 +1,240 @@
+/*
+************
+Global site header — logo, primary nav, admissions CTA, mobile drawer.
+Built flat and single-purpose on purpose: TechnoGurukul has one program,
+not a catalog, so there is no submenu/megamenu machinery here.
+
+Desktop nav collapses to the drawer at 1024px, not the more common
+1200px cutoff — the nav content measures comfortably under 960px
+(the Bootstrap container width at 1024px), so there is no reason to
+force tablet-landscape users into the mobile drawer.
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+$nav-breakpoint: 1024px;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--clr-brand-white);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &.is-scrolled {
+    border-bottom-color: var(--clr-brand-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 0;
+
+    @media #{$xs} {
+      padding: 12px 0;
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    img {
+      height: 44px;
+      width: auto;
+      @media #{$xs} {
+        height: 36px;
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+    flex: 1;
+    justify-content: center;
+
+    @media (min-width: $nav-breakpoint) {
+      display: flex;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  &__cta {
+    @media (max-width: 399px) {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--clr-brand-navy);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: var(--clr-brand-surface);
+      color: var(--clr-brand-blue);
+    }
+
+    @media (min-width: $nav-breakpoint) {
+      display: none;
+    }
+  }
+}
+
+// Shared nav list — desktop row and drawer column both start here.
+// Same "soft chip" hover/active language in both places on purpose,
+// so the mobile and desktop nav read as one system, not two.
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (min-width: 1200px) {
+    gap: 14px;
+  }
+  @media (min-width: 1400px) {
+    gap: 18px;
+  }
+
+  &__item {
+    display: block;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--clr-brand-navy);
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: var(--clr-brand-surface);
+      color: var(--clr-brand-blue);
+    }
+
+    &[data-active] {
+      background-color: var(--clr-brand-surface);
+      color: var(--clr-brand-blue);
+    }
+  }
+}
+
+// Mobile drawer
+.site-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background-color: rgba(7, 26, 53, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.site-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 70;
+  width: min(86vw, 360px);
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px 24px;
+  background-color: var(--clr-brand-white);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--clr-brand-border);
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--clr-brand-slate);
+  }
+
+  &__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--clr-brand-navy);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--clr-brand-surface);
+      color: var(--clr-brand-blue);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 8px;
+
+    .site-nav__item {
+      width: 100%;
+    }
+
+    .site-nav__link {
+      display: block;
+      width: 100%;
+      padding: 13px 12px;
+      font-size: 16.5px;
+    }
+  }
+
+  &__cta {
+    margin-top: 20px;
+    justify-content: center;
+  }
+}

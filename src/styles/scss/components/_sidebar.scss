@@ -1,0 +1,76 @@
+/*
+************
+*************************
+03. sidebar
+******************************************************* 
+*************************************************************** */
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.side-info {
+  width: 100%;
+  max-width: 400px;
+  background-color: #000;
+  box-shadow: 0 13px 29px rgba(4, 0, 23, 0.1);
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: -400px;
+  @include transition(0.4s);
+  padding: 30px 40px 40px 40px;
+}
+
+.side-info:is(.info-open) {
+  right: 0;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.mean-container {
+  .mean-nav {
+    background: transparent;
+    margin-top: 0;
+  }
+}
+.mean-container .mean-nav ul li a {
+  border: none;
+  font-size: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  color: #fff;
+}
+.mean-container .mean-nav ul li:hover > a {
+  background: transparent;
+  color: var(--clr-theme-primary);
+}
+.pl-sidebar-close.side-info-close {
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  color: #fff;
+}
+
+.mean-container .mean-nav ul li a.mean-expand {
+  padding: 8px 0;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  width: auto;
+}
+
+.mean-container .mean-nav ul li a.mean-expand:hover {
+  background: transparent;
+}
+
+.sidebar-close {
+  border: 0;
+  background-color: transparent;
+  font-size: 25px;
+  color: #fff;
+  padding-left: 0;
+  padding-right: 0;
+}
+.sidebar-close:hover {
+  color: #fff;
+}

@@ -1,0 +1,51 @@
+// TechnoGurukul brand palette.
+// "theme/common/body/bg" groups are kept so every existing component
+// (built against var(--clr-theme-primary) etc.) re-skins automatically.
+// The "brand" group exposes the palette under its own explicit names
+// for new components to reach for directly.
+$colors: (
+    common: (
+        white: #FFFFFF,
+        black: #111827,
+        lightBlack: #64748B,
+        darkBlack: #071A35,
+    ),
+    body: (
+        heading: #071A35,
+        text: #64748B,
+    ),
+    color: (
+        lightBlue: #EEF6FF,
+        darkPink: #E76F2E,
+        lightPink: #FFF4E5,
+        lightPurple: #E6FBFD,
+    ),
+    theme: (
+        primary: #1557C0,
+        primaryDark: #071A35,
+        primary-3: #F59E0B,
+        primary-4: #08B9D9,
+        primary-5: #E76F2E,
+        primary-6: #071A35,
+        primary-8: #1557C0,
+        primary-9: #08B9D9,
+        primary-10: #071A35,
+    ),
+    bg: (
+        gray: #F8FAFC,
+        gray-2: #EEF6FF,
+    ),
+    brand: (
+        navy: #071A35,
+        blue: #1557C0,
+        cyan: #08B9D9,
+        amber: #F59E0B,
+        orange: #E76F2E,
+        ivory: #F8FAFC,
+        surface: #EEF6FF,
+        white: #FFFFFF,
+        ink: #111827,
+        slate: #64748B,
+        border: #E2E8F0,
+    ),
+)

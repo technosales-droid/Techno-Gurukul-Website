@@ -1,0 +1,196 @@
+/* Global Error */
+.error-boundary-wrapper {
+  min-height: 60vh;
+  background: linear-gradient(135deg, #a7d9f8 0%, #3080c0 100%);
+}
+
+.error-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.error-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  max-width: 600px;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  color: white;
+}
+
+.btn-primary-enhanced {
+  background: linear-gradient(135deg, #a7d9f8 0%, #3080c0 100%);
+  color: white;
+}
+
+.btn-secondary-enhanced {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.error-details {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.error-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #495057;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 0.75rem;
+}
+
+.error-details summary:hover {
+  color: #007bff;
+}
+
+.error-code {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 0.5rem;
+}
+
+.status-badge {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+}
+/* Section Error */
+.section-error-wrapper {
+  background: linear-gradient(135deg, #a7d9f8 0%, #3080c0 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+}
+
+.section-error-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-error-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 1.5rem;
+}
+
+.section-status-badge {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-error-title {
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.section-error-description {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.section-error-message {
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  color: #721c24;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  word-break: break-word;
+  text-align: left;
+  margin-top: 0.75rem;
+}
+
+.section-error-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(108, 117, 125, 0.2);
+}
+
+.section-error-footer small {
+  color: #6c757d;
+  font-size: 0.75rem;
+}
