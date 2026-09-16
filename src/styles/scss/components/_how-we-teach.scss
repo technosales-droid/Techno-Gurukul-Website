@@ -1,0 +1,133 @@
+/*
+************
+Homepage section 5 — the learning process. A numbered timeline
+(mobile: vertical rule with nodes on the left; desktop ≥1024px:
+horizontal rule with nodes on top), not a card grid. Light ivory
+surface — the page alternates light/light/light/dark(Learning
+Model)/light again here, per the requested rhythm.
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.how {
+  background-color: var(--clr-brand-ivory);
+  padding: 56px 0;
+
+  @media (min-width: 768px) {
+    padding: 88px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 112px 0;
+  }
+
+  &__head {
+    max-width: 640px;
+    margin: 0 0 48px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+  }
+
+  &__desc {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--clr-brand-slate);
+  }
+
+  // Mobile/tablet: vertical rule down the left edge, nodes sitting on it.
+  &__stages {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__stage {
+    position: relative;
+    padding: 4px 0 36px 32px;
+    border-left: 2px solid var(--clr-brand-border);
+
+    &:last-child {
+      padding-bottom: 0;
+      border-left-color: transparent;
+    }
+
+    @media (min-width: 1024px) {
+      flex: 1;
+      padding: 32px 20px 0 0;
+      border-left: none;
+      border-top: 2px solid var(--clr-brand-border);
+
+      &:last-child {
+        border-top-color: var(--clr-brand-border);
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__stage-number {
+    position: absolute;
+    left: -17px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--clr-brand-navy);
+    background-color: var(--clr-brand-white);
+    border: 2px solid var(--clr-brand-blue);
+    border-radius: 50%;
+
+    @media (min-width: 1024px) {
+      left: 0;
+      top: -17px;
+    }
+  }
+
+  &__stage-title {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--clr-brand-navy);
+  }
+
+  &__stage-desc {
+    display: block;
+    max-width: 32ch;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--clr-brand-slate);
+  }
+}

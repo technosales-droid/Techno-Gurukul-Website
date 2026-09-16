@@ -2,6 +2,7 @@ import HeroSection from "@/components/hero/HeroSection";
 import PracticalLearningSection from "@/components/practical-learning/PracticalLearningSection";
 import ProgramsSection from "@/components/programs/ProgramsSection";
 import ApproachSection from "@/components/approach/ApproachSection";
+import HowWeTeachSection from "@/components/how-we-teach/HowWeTeachSection";
 import MainLayout from "@/components/layout/MainLayout";
 
 /**
@@ -19,6 +20,7 @@ const HomeMain = () => {
       <PracticalLearningSection />
       <ProgramsSection />
       <ApproachSection />
+      <HowWeTeachSection />
     </MainLayout>
   );
 };
