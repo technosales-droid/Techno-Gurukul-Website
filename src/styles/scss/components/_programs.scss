@@ -1,0 +1,126 @@
+/*
+************
+Homepage section 3 — the program presentation. One real program, so
+this is a strong single presentation (text + a factual "snapshot"
+panel) rather than a manufactured card grid.
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.programs {
+  background-color: var(--clr-brand-white);
+  padding: 56px 0;
+
+  @media (min-width: 768px) {
+    padding: 88px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 112px 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 32px;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+  }
+
+  &__content {
+    max-width: 540px;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    margin: 0 0 18px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+  }
+
+  &__desc {
+    margin: 0 0 28px;
+    max-width: 52ch;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--clr-brand-slate);
+  }
+
+  &__panel {
+    padding: 28px;
+    background-color: var(--clr-brand-ivory);
+    border: 1px solid var(--clr-brand-border);
+    border-radius: var(--radius-lg);
+  }
+
+  &__panel-label {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-brand-slate);
+
+    &--tags {
+      margin-top: 24px;
+    }
+  }
+
+  &__facts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 16px;
+    margin: 0;
+  }
+
+  &__fact {
+    dt {
+      margin: 0 0 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--clr-brand-slate);
+    }
+    dd {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--clr-brand-navy);
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 7px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--clr-brand-navy);
+      background-color: var(--clr-brand-white);
+      border: 1px solid var(--clr-brand-border);
+      border-radius: var(--radius-pill);
+    }
+  }
+}

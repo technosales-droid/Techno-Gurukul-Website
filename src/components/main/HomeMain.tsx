@@ -1,5 +1,6 @@
 import HeroSection from "@/components/hero/HeroSection";
 import PracticalLearningSection from "@/components/practical-learning/PracticalLearningSection";
+import ProgramsSection from "@/components/programs/ProgramsSection";
 import MainLayout from "@/components/layout/MainLayout";
 
 /**
@@ -15,6 +16,7 @@ const HomeMain = () => {
     <MainLayout showCta={false} showFooter={false}>
       <HeroSection />
       <PracticalLearningSection />
+      <ProgramsSection />
     </MainLayout>
   );
 };
