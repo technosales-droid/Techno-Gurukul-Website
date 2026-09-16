@@ -1,0 +1,165 @@
+/*
+************
+Homepage section 6 — Career Options. Deliberately the first
+image-dominant, asymmetric composition on the page (~58/42 split,
+photo leading) — every section above this uses a bordered panel,
+timeline or centered stat block, so this one has to look different
+at a glance. Content is the approved "One Skill. Three Directions."
+copy, unchanged.
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.career {
+  background-color: var(--clr-brand-white);
+  padding: 56px 0;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    padding: 88px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 112px 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 32px;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 56px;
+    }
+    @media (min-width: 1200px) {
+      gap: 80px;
+    }
+  }
+
+  &__visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    aspect-ratio: 4 / 5;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 24px;
+    text-align: center;
+    background-color: var(--clr-brand-ivory);
+    border: 1px solid var(--clr-brand-border);
+    border-radius: var(--radius-lg);
+
+    @media (min-width: 992px) {
+      max-width: none;
+      margin: 0;
+    }
+  }
+
+  &__visual-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-brand-slate);
+  }
+
+  &__visual-dims {
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--clr-brand-navy);
+  }
+
+  &__visual-ratio {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--clr-brand-blue);
+  }
+
+  &__visual-hint {
+    max-width: 260px;
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--clr-brand-slate);
+  }
+
+  &__content {
+    position: relative;
+    max-width: 480px;
+  }
+
+  &__ghost-number {
+    position: absolute;
+    top: -0.35em;
+    right: -0.1em;
+    z-index: 0;
+    font-size: clamp(9rem, 7rem + 8vw, 15rem);
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(7, 26, 53, 0.07);
+    pointer-events: none;
+
+    @media (max-width: 767px) {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__eyebrow {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+  }
+
+  &__paths {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 18px 0;
+      border-top: 1px solid var(--clr-brand-border);
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__path-name {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--clr-brand-navy);
+  }
+
+  &__path-desc {
+    display: block;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--clr-brand-slate);
+  }
+}

@@ -3,6 +3,7 @@ import PracticalLearningSection from "@/components/practical-learning/PracticalL
 import ProgramsSection from "@/components/programs/ProgramsSection";
 import ApproachSection from "@/components/approach/ApproachSection";
 import HowWeTeachSection from "@/components/how-we-teach/HowWeTeachSection";
+import CareerDirectionsSection from "@/components/career-directions/CareerDirectionsSection";
 import MainLayout from "@/components/layout/MainLayout";
 
 /**
@@ -21,6 +22,7 @@ const HomeMain = () => {
       <ProgramsSection />
       <ApproachSection />
       <HowWeTeachSection />
+      <CareerDirectionsSection />
     </MainLayout>
   );
 };
