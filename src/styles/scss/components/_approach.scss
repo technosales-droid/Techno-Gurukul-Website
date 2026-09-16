@@ -1,0 +1,125 @@
+/*
+************
+Homepage section 4 — "why this approach works". Deliberately the
+page's first full-width, dark, centered-editorial section, to break
+the two-column rhythm of Hero / Practical Learning / Programs. The
+60/25/15 split is the real TechnoGurukul learning-model figures, not
+a generic 4-step icon grid.
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.approach {
+  background-color: var(--clr-brand-navy);
+  padding: 64px 0;
+
+  @media (min-width: 768px) {
+    padding: 96px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 128px 0;
+  }
+
+  &__head {
+    max-width: 720px;
+    margin: 0 auto 56px;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      margin-bottom: 72px;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--clr-brand-cyan);
+  }
+
+  &__title {
+    margin: 0 0 18px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--clr-brand-white);
+    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+  }
+
+  &__desc {
+    margin: 0 auto;
+    max-width: 56ch;
+    font-size: 17px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+  }
+
+  &__stat {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+    @media (min-width: 768px) {
+      padding: 0 32px;
+      border-top: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.14);
+      text-align: center;
+
+      &:first-child {
+        padding-left: 0;
+        border-left: none;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__stat-value {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--clr-brand-white);
+    font-size: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+  }
+
+  &__stat-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--clr-brand-cyan);
+  }
+
+  &__stat-desc {
+    display: block;
+    max-width: 34ch;
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.72);
+
+    @media (min-width: 768px) {
+      max-width: 30ch;
+      margin: 0 auto;
+    }
+  }
+}

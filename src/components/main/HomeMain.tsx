@@ -1,6 +1,7 @@
 import HeroSection from "@/components/hero/HeroSection";
 import PracticalLearningSection from "@/components/practical-learning/PracticalLearningSection";
 import ProgramsSection from "@/components/programs/ProgramsSection";
+import ApproachSection from "@/components/approach/ApproachSection";
 import MainLayout from "@/components/layout/MainLayout";
 
 /**
@@ -17,6 +18,7 @@ const HomeMain = () => {
       <HeroSection />
       <PracticalLearningSection />
       <ProgramsSection />
+      <ApproachSection />
     </MainLayout>
   );
 };
