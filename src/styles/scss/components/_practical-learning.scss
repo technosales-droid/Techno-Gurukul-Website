@@ -1,0 +1,136 @@
+/*
+************
+Homepage section 2 — "The Difference Between Knowing And Doing".
+Continues the Hero's practical-learning idea; image side is a
+temporary, layout-stable placeholder (see PracticalLearningSection.tsx).
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.practical {
+  background-color: var(--clr-brand-white);
+  padding: 56px 0;
+
+  @media (min-width: 768px) {
+    padding: 88px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 112px 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 32px;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+  }
+
+  &__content {
+    max-width: 560px;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    margin: 0 0 18px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+  }
+
+  &__desc {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--clr-brand-slate);
+  }
+
+  &__points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--clr-brand-ink);
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5em;
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background-color: var(--clr-brand-blue);
+      }
+    }
+  }
+
+  &__visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    aspect-ratio: 3 / 2;
+    padding: 24px;
+    text-align: center;
+    background-color: var(--clr-brand-ivory);
+    border: 1px solid var(--clr-brand-border);
+    border-radius: var(--radius-lg);
+
+    @media (min-width: 992px) {
+      order: -1;
+    }
+  }
+
+  &__visual-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-brand-slate);
+  }
+
+  &__visual-dims {
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--clr-brand-navy);
+  }
+
+  &__visual-ratio {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--clr-brand-blue);
+  }
+
+  &__visual-hint {
+    max-width: 260px;
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--clr-brand-slate);
+  }
+}
