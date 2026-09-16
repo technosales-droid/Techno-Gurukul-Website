@@ -1,4 +1,4 @@
-const blocks = [
+const points = [
   {
     title: "Real Client Exposure",
     desc: "Work on actual business requirements and understand how marketing works outside the classroom.",
@@ -18,10 +18,18 @@ const blocks = [
 ];
 
 /**
- * "Built For The Real World" — a flush 2x2 grid of numbered blocks,
- * no card chrome (no borders, shadows or backgrounds per block), a
- * distinct silhouette from both the Career Options list and the How
- * We Teach timeline.
+ * "Built For The Real World" — a horizontal strip of four items, each
+ * anchored by a circular numbered badge that breaks free of the tile
+ * rather than sitting inline as plain text. No card chrome, no photo
+ * (the badge system itself is the section's visual signature — see
+ * report for why an image wasn't used). A gentle vertical offset on
+ * alternating items on desktop adds controlled asymmetry without a
+ * connecting line, so it doesn't read as another timeline.
+ *
+ * Note: `.why__grid`/`.why__block*` (the previous 2x2 layout this
+ * replaced) are still used by the Admissions page's "How It Works"
+ * steps — untouched here on purpose, this component uses its own
+ * class names instead.
  */
 const WhyTechnoGurukulSection = () => {
   return (
@@ -32,14 +40,14 @@ const WhyTechnoGurukulSection = () => {
           <h2 className="why__title">Built For The Real World</h2>
         </div>
 
-        <ol className="why__grid">
-          {blocks.map((block, i) => (
-            <li className="why__block" key={block.title}>
-              <span className="why__block-number" aria-hidden="true">
+        <ol className="why-strip">
+          {points.map((point, i) => (
+            <li className="why-strip__item" key={point.title}>
+              <span className="why-strip__badge" aria-hidden="true">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="why__block-title">{block.title}</span>
-              <span className="why__block-desc">{block.desc}</span>
+              <span className="why-strip__title">{point.title}</span>
+              <span className="why-strip__desc">{point.desc}</span>
             </li>
           ))}
         </ol>

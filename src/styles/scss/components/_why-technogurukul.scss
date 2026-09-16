@@ -77,3 +77,67 @@
     color: var(--clr-brand-slate);
   }
 }
+
+// Horizontal badge strip — the "Built For The Real World" homepage
+// section (Task 1.8 redesign). `.why__grid`/`.why__block*` above are
+// left untouched: the Admissions page's "How It Works" steps still
+// use them.
+.why-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+}
+
+.why-strip__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  // Controlled asymmetry: alternating items sit slightly lower,
+  // without a connecting line between them (that would read as a
+  // timeline, which this deliberately isn't).
+  @media (min-width: 768px) {
+    &:nth-child(even) {
+      margin-top: 28px;
+    }
+  }
+}
+
+.why-strip__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--clr-brand-white);
+  background-color: var(--clr-brand-blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.why-strip__title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+.why-strip__desc {
+  display: block;
+  max-width: 34ch;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--clr-brand-slate);
+}
