@@ -1,4 +1,4 @@
-import ComingSoonMain from "@/components/main/ComingSoonMain";
+import CareerPathsPageMain from "@/components/main/CareerPathsPageMain";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,10 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function CareerPathsPage() {
-  return (
-    <ComingSoonMain
-      title="Career Paths"
-      description="Get Hired, Go Freelance, or Build Your Business — the three career directions page is being built next."
-    />
-  );
+  return <CareerPathsPageMain />;
 }

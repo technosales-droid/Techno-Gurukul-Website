@@ -1,0 +1,367 @@
+/*
+************
+Shared building blocks for the secondary/deep pages (Program, About,
+How We Teach, Curriculum, Career Paths, Trainer, FAQ, Contact,
+Admissions, legal). These are functional, consistent, on-brand
+pages — not bespoke art-directed homepage sections.
+*************************
+*/
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.page-hero {
+  background-color: var(--clr-brand-ivory);
+  padding: 56px 0 48px;
+
+  @media (min-width: 768px) {
+    padding: 80px 0 64px;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    max-width: 780px;
+    margin: 0 0 18px;
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 3rem);
+  }
+
+  &__desc {
+    max-width: 62ch;
+    margin: 0;
+    font-size: 17.5px;
+    line-height: 1.65;
+    color: var(--clr-brand-slate);
+  }
+}
+
+.content-section {
+  padding: 48px 0;
+
+  @media (min-width: 768px) {
+    padding: 72px 0;
+  }
+
+  &--alt {
+    background-color: var(--clr-brand-ivory);
+  }
+  &--dark {
+    background-color: var(--clr-brand-navy);
+    color: rgba(255, 255, 255, 0.8);
+
+    .content-section__title,
+    .content-block__title {
+      color: var(--clr-brand-white);
+    }
+    .content-section__intro,
+    .content-block__desc {
+      color: rgba(255, 255, 255, 0.72);
+    }
+  }
+
+  &__head {
+    max-width: 700px;
+    margin: 0 0 40px;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    margin: 0 0 14px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2.125rem);
+  }
+
+  &__intro {
+    margin: 0;
+    max-width: 65ch;
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--clr-brand-slate);
+  }
+}
+
+// A single "N — Title / description" block, reused for About's
+// belief/vision blocks, How We Teach's subsections, etc.
+.content-block {
+  & + & {
+    margin-top: 32px;
+  }
+
+  &__eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--clr-brand-blue);
+  }
+
+  &__title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    color: var(--clr-brand-navy);
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.625rem);
+  }
+
+  &__desc {
+    margin: 0;
+    max-width: 68ch;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--clr-brand-slate);
+  }
+}
+
+.content-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+
+.content-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Dash-marker list, matching the pattern established on the homepage.
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--clr-brand-ink);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background-color: var(--clr-brand-blue);
+    }
+  }
+}
+
+// Numbered module list (curriculum modules, "what you will learn" topics).
+.module-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--clr-brand-border);
+  border: 1px solid var(--clr-brand-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  li {
+    padding: 18px 20px;
+    background-color: var(--clr-brand-white);
+  }
+}
+
+.module-list__number {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--clr-brand-blue);
+}
+
+.module-list__title {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+.module-list__desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--clr-brand-slate);
+}
+
+// Inline fact row (Duration / Mode / Location / Batch Size, etc.)
+.content-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 36px;
+  margin: 28px 0 0;
+  padding: 24px;
+  background-color: var(--clr-brand-ivory);
+  border: 1px solid var(--clr-brand-border);
+  border-radius: var(--radius-lg);
+}
+
+.content-meta__item dt {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--clr-brand-slate);
+}
+.content-meta__item dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+// Centered CTA block, reused for every page-ending CTA.
+.content-cta {
+  padding: 56px 0;
+  text-align: center;
+  // Academic Blue, not Navy — this block is almost always followed
+  // immediately by the navy footer, and two adjacent navy blocks
+  // would blur into one another.
+  background-color: var(--clr-brand-blue);
+
+  @media (min-width: 768px) {
+    padding: 80px 0;
+  }
+
+  &__title {
+    max-width: 640px;
+    margin: 0 auto 14px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--clr-brand-white);
+    font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2.25rem);
+  }
+
+  &__desc {
+    max-width: 480px;
+    margin: 0 auto 28px;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+}
+
+// FAQ — native <details>/<summary>, no JS/component needed.
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 760px;
+}
+
+.faq-item {
+  border: 1px solid var(--clr-brand-border);
+  border-radius: var(--radius-md);
+  background-color: var(--clr-brand-white);
+  overflow: hidden;
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--clr-brand-navy);
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "+";
+      flex-shrink: 0;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--clr-brand-blue);
+    }
+  }
+
+  &[open] summary::after {
+    content: "−";
+  }
+
+  p {
+    margin: 0;
+    padding: 0 20px 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--clr-brand-slate);
+  }
+}
+
+// Trainer expertise tags — reuses the Programs section's pill pattern.
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 7px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--clr-brand-navy);
+    background-color: var(--clr-brand-ivory);
+    border: 1px solid var(--clr-brand-border);
+    border-radius: var(--radius-pill);
+  }
+}

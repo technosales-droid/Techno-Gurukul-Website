@@ -1,12 +1,11 @@
-import ContactMain from "@/components/main/ContactMain";
+import ContactPageMain from "@/components/main/ContactPageMain";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Contact Us | Eduan - School, University & Online Education Next.js Template",
-  description: "Eduan is a modern Next.js template for schools, universities, online courses, and eLearning platforms.",
+  title: "Contact | TechnoGurukul",
+  description: "Talk to the TechnoGurukul team about the Digital Marketing Program.",
 };
 
-export default function Home() {
-  return <ContactMain />;
+export default function ContactPage() {
+  return <ContactPageMain />;
 }

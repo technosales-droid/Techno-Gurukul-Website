@@ -1,12 +1,12 @@
-import AboutMain from "@/components/main/AboutMain";
+import AboutPageMain from "@/components/main/AboutPageMain";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "About | Eduan - School, University & Online Education Next.js Template",
-  description: "Eduan is a modern Next.js template for schools, universities, online courses, and eLearning platforms.",
+  title: "About | TechnoGurukul",
+  description:
+    "TechnoGurukul is a skill development academy based in Nashik, Maharashtra, built around practical, real-world learning.",
 };
 
-export default function Home() {
-  return <AboutMain />;
+export default function AboutPage() {
+  return <AboutPageMain />;
 }

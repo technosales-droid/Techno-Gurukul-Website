@@ -202,6 +202,21 @@
     }
 }
 
+// Outline button for dark/blue backgrounds (content-cta, footer CTAs).
+.theme-btn-outline-light {
+    background: transparent;
+    color: var(--clr-brand-white);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-btn);
+    &::after {
+        display: none;
+    }
+    &:hover {
+        border-color: var(--clr-brand-white);
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
 // TechnoGurukul amber CTA — reserved for high-value actions
 // (admissions, enrollment). Not used for routine buttons/links.
 .theme-btn-amber {

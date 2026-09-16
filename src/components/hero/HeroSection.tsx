@@ -85,15 +85,15 @@ const HeroSection = () => {
             </p>
 
             <p className="hero__meta">
-              Nashik, Maharashtra <span aria-hidden="true">·</span> Offline, Practical Training
+              Learn. Execute. Build. Become Industry-Ready.
             </p>
 
             <div className="hero__actions">
-              <Link href="/admissions" className="theme-btn theme-btn-amber theme-btn-big">
-                Apply Now
-              </Link>
-              <Link href="/programs" className="theme-btn theme-btn-outline theme-btn-big">
+              <Link href="/programs" className="theme-btn theme-btn-amber theme-btn-big">
                 Explore the Program
+              </Link>
+              <Link href="/contact" className="theme-btn theme-btn-outline theme-btn-big">
+                Enquire Now
               </Link>
             </div>
           </div>

@@ -5,9 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: min(40px, 6vw);
-  color: #ec8212;
-  -webkit-box-reflect: below -0.4em linear-gradient(transparent,
-      #00000045);
+  color: var(--clr-brand-blue);
 }
 
 .wave-bouncing-loading-animation span {

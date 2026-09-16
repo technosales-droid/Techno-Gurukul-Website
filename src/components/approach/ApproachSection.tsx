@@ -32,7 +32,8 @@ const ApproachSection = () => {
             Digital Marketing Is A Skill, Not A Subject.
           </h2>
           <p className="approach__desc">
-            Our learning model puts practical execution first, supported by
+            We believe digital marketing is a skill, not a subject. Our
+            learning model puts practical execution first, supported by
             strategy, concepts and the tools marketers use every day. You
             don&apos;t simply learn what a platform does — you learn what to
             do with it.
