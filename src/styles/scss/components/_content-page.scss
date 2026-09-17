@@ -325,6 +325,11 @@ pages — not bespoke art-directed homepage sections.
   border-radius: var(--radius-md);
   background-color: var(--clr-brand-white);
   overflow: hidden;
+  transition: border-color 0.2s ease;
+
+  &[open] {
+    border-color: var(--clr-brand-blue);
+  }
 
   summary {
     display: flex;
@@ -438,10 +443,15 @@ pages — not bespoke art-directed homepage sections.
   position: relative;
   padding: 4px 0 36px 32px;
   border-left: 2px solid var(--clr-brand-border);
+  transition: border-color 0.2s ease;
 
   &:last-child {
     padding-bottom: 0;
     border-left-color: transparent;
+  }
+
+  &:hover {
+    border-left-color: var(--clr-brand-blue);
   }
 }
 
@@ -454,6 +464,11 @@ pages — not bespoke art-directed homepage sections.
 
     &:last-child {
       padding-right: 0;
+    }
+
+    &:hover {
+      border-top-color: var(--clr-brand-blue);
+      border-left-color: transparent;
     }
   }
 }
@@ -593,6 +608,20 @@ pages — not bespoke art-directed homepage sections.
   }
 }
 
+.topic-cluster__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--clr-brand-white);
+  background-color: var(--clr-brand-blue);
+  border-radius: 50%;
+}
+
 .topic-cluster__title {
   margin: 0 0 4px;
   font-size: 13px;
@@ -666,6 +695,30 @@ pages — not bespoke art-directed homepage sections.
   color: var(--clr-brand-navy);
 }
 
+// Skill node — the shared origin above Career Paths' branch split.
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 32px;
+}
+
+.skill-node__badge {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--clr-brand-white);
+  background-color: var(--clr-brand-navy);
+  border-radius: var(--radius-pill);
+}
+
+.skill-node__line {
+  width: 2px;
+  height: 28px;
+  margin-top: 2px;
+  background-color: var(--clr-brand-border);
+}
+
 // Branch split — Career Paths' "one skill, three directions" composition.
 .branch-split {
   display: grid;
@@ -682,6 +735,11 @@ pages — not bespoke art-directed homepage sections.
 .branch-split__item {
   padding-top: 28px;
   border-top: 2px solid var(--clr-brand-border);
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-top-color: var(--clr-brand-blue);
+  }
 
   @media (min-width: 900px) {
     padding: 32px 28px 0;
@@ -693,6 +751,9 @@ pages — not bespoke art-directed homepage sections.
     }
     &:last-child {
       padding-right: 0;
+    }
+    &:not(:first-child):hover {
+      border-left-color: var(--clr-brand-blue);
     }
   }
 }
@@ -776,6 +837,59 @@ pages — not bespoke art-directed homepage sections.
   font-size: 13.5px;
   font-weight: 600;
   color: var(--clr-brand-blue);
+}
+
+// Expertise list — Trainer's icon + label expertise system, replacing a
+// flat pill row so each area of expertise is individually legible.
+.expertise-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.expertise-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.row-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--clr-brand-blue);
+}
+
+.expertise-list__label {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+// Contact channel list — address/phone/email, each with a small icon so
+// the three channels scan as distinct items rather than one run-on line.
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--clr-brand-ink);
 }
 
 // Pull quote — a manifesto-style statement, distinct from .content-cta so

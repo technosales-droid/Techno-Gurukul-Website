@@ -69,6 +69,11 @@ const CareerPathsPageMain = () => {
             </h2>
           </div>
 
+          <div className="skill-node">
+            <span className="skill-node__badge">One Core Skill: Digital Marketing</span>
+            <span className="skill-node__line" aria-hidden="true" />
+          </div>
+
           <div className="branch-split">
             {paths.map((path, i) => (
               <motion.div

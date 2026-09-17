@@ -4,6 +4,33 @@ import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
 import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
 
+/** Thin-stroke icons for the three contact channels — same line weight
+ * as the site's established icon language. */
+const PinIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="row-icon">
+    <path d="M9 16.5S3.5 11.4 3.5 7.4a5.5 5.5 0 0 1 11 0c0 4-5.5 9.1-5.5 9.1Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+    <circle cx="9" cy="7.3" r="2" stroke="currentColor" strokeWidth="1.3" />
+  </svg>
+);
+
+const PhoneIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="row-icon">
+    <path
+      d="M4.3 3.5h2.4l1 2.9-1.5 1.4a8.4 8.4 0 0 0 3.7 3.7l1.4-1.5 2.9 1v2.4c0 .7-.6 1.2-1.3 1.1A11.7 11.7 0 0 1 3.2 4.8c-.1-.7.4-1.3 1.1-1.3Z"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const MailIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="row-icon">
+    <rect x="2.5" y="4" width="13" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
+    <path d="M3 5l6 5 6-5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const audiences = [
   "student",
   "graduate",
@@ -49,16 +76,22 @@ const ContactPageMain = () => {
           >
             <span className="content-block__eyebrow">Contact Details</span>
             <h2 className="content-block__title">TechnoGurukul</h2>
-            <p className="content-block__desc">
-              Address — to be confirmed
-              <br />
-              Phone — to be confirmed
-              <br />
-              Email:{" "}
-              <a href="mailto:hello@technogurukul.com">
-                hello@technogurukul.com
-              </a>
-            </p>
+            <ul className="contact-list">
+              <li className="contact-list__item">
+                <PinIcon />
+                <span>Address — to be confirmed</span>
+              </li>
+              <li className="contact-list__item">
+                <PhoneIcon />
+                <span>Phone — to be confirmed</span>
+              </li>
+              <li className="contact-list__item">
+                <MailIcon />
+                <a href="mailto:hello@technogurukul.com">
+                  hello@technogurukul.com
+                </a>
+              </li>
+            </ul>
           </motion.div>
 
           <motion.div

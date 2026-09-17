@@ -5,6 +5,19 @@ import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
 import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
 
+/** Matches the arrow used on the homepage's Hero/Closing CTA buttons. */
+const ArrowIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="theme-btn-arrow__icon">
+    <path
+      d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const steps = [
   { title: "Enquire", desc: "Tell us about yourself and what you want to learn." },
   { title: "Understand", desc: "Speak with our team and understand the program, curriculum and learning methodology." },
@@ -57,9 +70,14 @@ const AdmissionsPageMain = () => {
       <section className="content-cta">
         <div className="container">
           <h2 className="content-cta__title">Ready To Start?</h2>
+          <p className="content-cta__desc">
+            Apply directly, or talk to admissions first — whichever you're
+            ready for.
+          </p>
           <div className="content-cta__actions">
-            <Link href="/contact" className="theme-btn theme-btn-amber theme-btn-big">
+            <Link href="/contact" className="theme-btn theme-btn-amber theme-btn-big theme-btn-arrow">
               Apply Now
+              <ArrowIcon />
             </Link>
             <a
               href="mailto:hello@technogurukul.com"

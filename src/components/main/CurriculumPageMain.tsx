@@ -75,6 +75,15 @@ const CurriculumPageMain = () => {
 
       <section className="content-section">
         <div className="container">
+          <div className="content-section__head">
+            <span className="content-section__eyebrow">Full Curriculum</span>
+            <p className="content-section__intro">
+              The 18 modules below are grouped into four phases purely for
+              clarity — an organisational presentation of the curriculum,
+              not a separate official structure.
+            </p>
+          </div>
+
           {phases.map((phase, pi) => (
             <div className="phase-group" key={phase.title}>
               <motion.div

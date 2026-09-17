@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
 import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
+import { CheckIcon } from "@/components/utils/ContentIcons";
 
 const facts = [
   { label: "Duration", value: "4.5–5 Months" },
@@ -71,13 +72,6 @@ const takeaways = [
   "Career and freelancing knowledge",
 ];
 
-const CheckIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="content-list__icon">
-    <circle cx="9" cy="9" r="8" stroke="currentColor" strokeWidth="1.3" />
-    <path d="M5.5 9.2 7.8 11.5 12.5 6.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 const ProgramsPageMain = () => {
   return (
     <MainLayout>
@@ -130,6 +124,9 @@ const ProgramsPageMain = () => {
                 variants={fadeUp}
                 transition={revealTransition(ci * 0.08)}
               >
+                <span className="topic-cluster__number" aria-hidden="true">
+                  {String(ci + 1).padStart(2, "0")}
+                </span>
                 <span className="topic-cluster__title">{cluster.title}</span>
                 <p className="topic-cluster__desc">{cluster.desc}</p>
                 <ul className="topic-cluster__list">

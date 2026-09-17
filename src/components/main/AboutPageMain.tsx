@@ -1,13 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
 import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
 
 /**
- * The three "Our Belief / Our Vision / Where We're Going" blocks,
- * restructured as sequential narrative chapters on the shared stage-rail
- * (vertical only — a reading flow, not parallel steps). Content unchanged.
+ * Four sequential narrative chapters on the shared stage-rail (vertical
+ * only — a reading flow, not parallel steps). The first three are the
+ * original "Our Belief / Our Vision / Where We're Going" blocks; the
+ * fourth folds in the previous closing-CTA copy ("Built In Nashik...")
+ * as a real chapter instead of a disconnected box. All copy unchanged.
  */
 const chapters = [
   {
@@ -25,6 +28,11 @@ const chapters = [
     title: "Digital Marketing is our starting point.",
     desc: "The larger TechnoGurukul ecosystem can extend into emerging areas such as:",
     disciplines: ["Data Science & Analytics", "Cybersecurity", "Blockchain & Web3"],
+  },
+  {
+    eyebrow: "Built In Nashik",
+    title: "Built In Nashik. Designed For What's Next.",
+    desc: "We want students from Nashik and beyond to have access to practical, relevant and continuously evolving technology education.",
   },
 ];
 
@@ -82,14 +90,12 @@ const AboutPageMain = () => {
 
       <section className="content-cta">
         <div className="container">
-          <h2 className="content-cta__title">
-            Built In Nashik. Designed For What&apos;s Next.
-          </h2>
-          <p className="content-cta__desc">
-            We want students from Nashik and beyond to have access to
-            practical, relevant and continuously evolving technology
-            education.
-          </p>
+          <h2 className="content-cta__title">See What You&apos;d Actually Learn.</h2>
+          <div className="content-cta__actions">
+            <Link href="/programs" className="theme-btn theme-btn-amber theme-btn-big">
+              View The Program
+            </Link>
+          </div>
         </div>
       </section>
     </MainLayout>

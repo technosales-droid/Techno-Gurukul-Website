@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
 import CountUp from "@/components/utils/CountUp";
 import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
+import { CheckIcon } from "@/components/utils/ContentIcons";
 
 const stats = [
   {
@@ -120,9 +121,12 @@ const HowWeTeachPageMain = () => {
                 <h3 className="content-block__title">{step.title}</h3>
                 <p className="content-block__desc">{step.desc}</p>
                 {step.list && (
-                  <ul className="content-list">
+                  <ul className="content-list content-list--icon">
                     {step.list.map((item) => (
-                      <li key={item}>{item}</li>
+                      <li key={item}>
+                        <CheckIcon />
+                        <span>{item}</span>
+                      </li>
                     ))}
                   </ul>
                 )}
