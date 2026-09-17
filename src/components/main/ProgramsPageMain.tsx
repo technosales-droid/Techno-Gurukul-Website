@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
+import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
 
 const facts = [
   { label: "Duration", value: "4.5–5 Months" },
@@ -9,23 +13,53 @@ const facts = [
   { label: "Batch Size", value: "Limited" },
 ];
 
-const topics = [
-  { title: "Digital Marketing Strategy", desc: "Understand the role of digital in the overall marketing mix." },
-  { title: "Consumer Psychology", desc: "Understand audiences, behaviour, motivations and purchase decisions." },
-  { title: "Brand Building", desc: "Learn how brands create positioning, identity and meaningful connections." },
-  { title: "Content & Copywriting", desc: "Create content that attracts attention and drives action." },
-  { title: "Social Media Marketing", desc: "Plan, create, manage and evaluate social media campaigns." },
-  { title: "Search Engine Optimisation", desc: "Learn how websites earn visibility through organic search." },
-  { title: "AEO & GEO", desc: "Understand how content is structured for answer engines and generative search." },
-  { title: "Google Ads", desc: "Learn search advertising, campaign structure, targeting and optimisation." },
-  { title: "Meta Ads", desc: "Understand audience targeting, campaign creation and performance optimisation." },
-  { title: "Performance Marketing", desc: "Learn how marketers use data to measure and improve campaign performance." },
-  { title: "Analytics & Tracking", desc: "Understand marketing data and turn numbers into decisions." },
-  { title: "Website & Landing Pages", desc: "Learn the principles behind conversion-focused digital experiences." },
-  { title: "AI for Marketing", desc: "Use emerging AI tools to research, create, analyse and improve marketing work." },
-  { title: "WhatsApp & Lead Generation", desc: "Learn how businesses can generate, nurture and convert leads." },
-  { title: "E-commerce Marketing", desc: "Understand how digital channels support online commerce." },
-  { title: "Freelancing & Client Acquisition", desc: "Learn the fundamentals of finding clients and delivering marketing services." },
+/**
+ * The 16 learning areas, grouped into 4 clusters so the program reads as
+ * an ecosystem map rather than one flat wall of 16 equal-weight boxes.
+ * Content/wording is unchanged from the previous flat list — only the
+ * grouping is new.
+ */
+const clusters = [
+  {
+    title: "Strategy & Brand",
+    desc: "Why marketing decisions get made the way they do.",
+    topics: [
+      { title: "Digital Marketing Strategy", desc: "Understand the role of digital in the overall marketing mix." },
+      { title: "Consumer Psychology", desc: "Understand audiences, behaviour, motivations and purchase decisions." },
+      { title: "Brand Building", desc: "Learn how brands create positioning, identity and meaningful connections." },
+    ],
+  },
+  {
+    title: "Content & Presence",
+    desc: "What audiences actually see, read and interact with.",
+    topics: [
+      { title: "Content & Copywriting", desc: "Create content that attracts attention and drives action." },
+      { title: "Social Media Marketing", desc: "Plan, create, manage and evaluate social media campaigns." },
+      { title: "Website & Landing Pages", desc: "Learn the principles behind conversion-focused digital experiences." },
+    ],
+  },
+  {
+    title: "Search & Paid Acquisition",
+    desc: "How businesses get found and get in front of the right audience.",
+    topics: [
+      { title: "Search Engine Optimisation", desc: "Learn how websites earn visibility through organic search." },
+      { title: "AEO & GEO", desc: "Understand how content is structured for answer engines and generative search." },
+      { title: "Google Ads", desc: "Learn search advertising, campaign structure, targeting and optimisation." },
+      { title: "Meta Ads", desc: "Understand audience targeting, campaign creation and performance optimisation." },
+      { title: "Performance Marketing", desc: "Learn how marketers use data to measure and improve campaign performance." },
+    ],
+  },
+  {
+    title: "Data, AI & Growth",
+    desc: "How results are measured, improved and turned into work.",
+    topics: [
+      { title: "Analytics & Tracking", desc: "Understand marketing data and turn numbers into decisions." },
+      { title: "AI for Marketing", desc: "Use emerging AI tools to research, create, analyse and improve marketing work." },
+      { title: "WhatsApp & Lead Generation", desc: "Learn how businesses can generate, nurture and convert leads." },
+      { title: "E-commerce Marketing", desc: "Understand how digital channels support online commerce." },
+      { title: "Freelancing & Client Acquisition", desc: "Learn the fundamentals of finding clients and delivering marketing services." },
+    ],
+  },
 ];
 
 const takeaways = [
@@ -36,6 +70,13 @@ const takeaways = [
   "A better understanding of client requirements",
   "Career and freelancing knowledge",
 ];
+
+const CheckIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="content-list__icon">
+    <circle cx="9" cy="9" r="8" stroke="currentColor" strokeWidth="1.3" />
+    <path d="M5.5 9.2 7.8 11.5 12.5 6.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const ProgramsPageMain = () => {
   return (
@@ -74,18 +115,34 @@ const ProgramsPageMain = () => {
               Digital marketing is bigger than social media.
             </h2>
             <p className="content-section__intro">
-              Our program covers the complete digital marketing ecosystem.
+              Our program covers the complete digital marketing ecosystem,
+              grouped into four connected areas.
             </p>
           </div>
 
-          <ul className="module-list">
-            {topics.map((topic) => (
-              <li key={topic.title}>
-                <span className="module-list__title">{topic.title}</span>
-                <span className="module-list__desc">{topic.desc}</span>
-              </li>
+          <div className="topic-clusters">
+            {clusters.map((cluster, ci) => (
+              <motion.div
+                key={cluster.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+                variants={fadeUp}
+                transition={revealTransition(ci * 0.08)}
+              >
+                <span className="topic-cluster__title">{cluster.title}</span>
+                <p className="topic-cluster__desc">{cluster.desc}</p>
+                <ul className="topic-cluster__list">
+                  {cluster.topics.map((topic) => (
+                    <li key={topic.title}>
+                      <span className="topic-cluster__item-title">{topic.title}</span>
+                      <span className="topic-cluster__item-desc">{topic.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -98,9 +155,12 @@ const ProgramsPageMain = () => {
               knowledge.
             </h2>
           </div>
-          <ul className="content-list">
+          <ul className="content-list content-list--icon">
             {takeaways.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <CheckIcon />
+                <span>{item}</span>
+              </li>
             ))}
           </ul>
         </div>

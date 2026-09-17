@@ -79,9 +79,11 @@
 }
 
 // Horizontal badge strip — the "Built For The Real World" homepage
-// section (Task 1.8 redesign). `.why__grid`/`.why__block*` above are
-// left untouched: the Admissions page's "How It Works" steps still
-// use them.
+// section (Task 1.8 redesign). `.why__grid`/`.why__block*` above are no
+// longer referenced by any page (Admissions' "How It Works" steps moved
+// to the shared `.stage-rail` system, Task 4) but are left in place
+// rather than deleted, since removing unused CSS was outside this task's
+// scope.
 .why-strip {
   display: grid;
   grid-template-columns: 1fr;

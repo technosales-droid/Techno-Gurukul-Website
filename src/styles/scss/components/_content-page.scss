@@ -184,6 +184,24 @@ pages — not bespoke art-directed homepage sections.
   }
 }
 
+// Icon-led variant — swaps the dash marker for an inline icon (e.g.
+// Programs' "What You Take Away" checklist).
+.content-list--icon li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 0;
+
+  &::before {
+    content: none;
+  }
+}
+
+.content-list__icon {
+  flex-shrink: 0;
+  color: var(--clr-brand-blue);
+}
+
 // Numbered module list (curriculum modules, "what you will learn" topics).
 .module-list {
   display: grid;
@@ -325,16 +343,20 @@ pages — not bespoke art-directed homepage sections.
     }
 
     &::after {
-      content: "+";
+      content: "";
       flex-shrink: 0;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--clr-brand-blue);
+      width: 9px;
+      height: 9px;
+      margin-right: 4px;
+      border-right: 2px solid var(--clr-brand-blue);
+      border-bottom: 2px solid var(--clr-brand-blue);
+      transform: rotate(45deg);
+      transition: transform 0.25s ease;
     }
   }
 
   &[open] summary::after {
-    content: "−";
+    transform: rotate(225deg);
   }
 
   p {
@@ -344,6 +366,464 @@ pages — not bespoke art-directed homepage sections.
     line-height: 1.6;
     color: var(--clr-brand-slate);
   }
+}
+
+// ---------------------------------------------------------------------------
+// Task 4 — shared secondary-page systems. Each is used by 2+ pages so the
+// nine pages read as one design system while each keeps its own page-level
+// composition (see individual *PageMain.tsx files for how these combine).
+// ---------------------------------------------------------------------------
+
+// Placeholder visual (map/form/photo — anywhere a real asset is pending).
+// Generalized from the homepage Career Directions image placeholder so
+// secondary pages don't reach into a homepage-only partial for this.
+.content-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 220px;
+  padding: 24px;
+  text-align: center;
+  background-color: var(--clr-brand-ivory);
+  border: 1px solid var(--clr-brand-border);
+  border-radius: var(--radius-lg);
+}
+
+.content-visual__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-brand-slate);
+}
+
+.content-visual__dims {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+.content-visual__hint {
+  max-width: 320px;
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--clr-brand-slate);
+}
+
+// Stage rail — connected numbered-step timeline. Shared by Curriculum
+// (module phases), How We Teach (3-step process), About (narrative
+// chapters) and Admissions (application journey). Mirrors the proven
+// mobile-vertical-rule/desktop-horizontal-rule technique already used
+// elsewhere on the site, generalized here for reuse across content pages.
+// `--horizontal` rows onto a top rule on desktop; omit it for an
+// always-vertical reading flow (About's narrative chapters).
+.stage-rail {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stage-rail--horizontal {
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.stage-rail__step {
+  position: relative;
+  padding: 4px 0 36px 32px;
+  border-left: 2px solid var(--clr-brand-border);
+
+  &:last-child {
+    padding-bottom: 0;
+    border-left-color: transparent;
+  }
+}
+
+.stage-rail--horizontal .stage-rail__step {
+  @media (min-width: 1024px) {
+    flex: 1;
+    padding: 32px 24px 0 0;
+    border-left: none;
+    border-top: 2px solid var(--clr-brand-border);
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.stage-rail__step-number {
+  position: absolute;
+  left: -17px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--clr-brand-navy);
+  background-color: var(--clr-brand-white);
+  border: 2px solid var(--clr-brand-blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stage-rail--horizontal .stage-rail__step-number {
+  @media (min-width: 1024px) {
+    left: 0;
+    top: -17px;
+  }
+}
+
+.stage-rail__step-eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clr-brand-cyan);
+}
+
+.stage-rail__step-title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+.stage-rail__step-desc {
+  display: block;
+  max-width: 42ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--clr-brand-slate);
+}
+
+// Dark-band big-number trio — reuses the homepage Approach section's
+// visual signature (60/25/15) so the same "our model" motif is
+// recognizable when it recurs on How We Teach. Deliberately identical
+// scale/weight to .approach__stat*, intentional cross-page consistency.
+.stat-trio {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+}
+
+.stat-trio__item {
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+  @media (min-width: 768px) {
+    padding: 0 32px;
+    border-top: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+    text-align: center;
+
+    &:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.stat-trio__value {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--clr-brand-white);
+  font-size: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+}
+
+.stat-trio__label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--clr-brand-cyan);
+}
+
+.stat-trio__desc {
+  display: block;
+  max-width: 34ch;
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+
+  @media (min-width: 768px) {
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+}
+
+// Topic clusters — Programs page groups its 16 learning areas into a
+// small number of labeled clusters instead of one flat 16-item wall.
+.topic-clusters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 8px;
+
+  @media (min-width: 860px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 56px;
+  }
+}
+
+.topic-cluster__title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--clr-brand-blue);
+}
+
+.topic-cluster__desc {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--clr-brand-slate);
+}
+
+.topic-cluster__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 14px 0;
+    border-top: 1px solid var(--clr-brand-border);
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.topic-cluster__item-title {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--clr-brand-navy);
+}
+
+.topic-cluster__item-desc {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--clr-brand-slate);
+}
+
+// Curriculum phase groups — 18 modules organized into 4 sequential phases.
+.phase-group + .phase-group {
+  margin-top: 48px;
+}
+
+.phase-group__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.phase-group__number {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--clr-brand-cyan);
+}
+
+.phase-group__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--clr-brand-navy);
+}
+
+// Branch split — Career Paths' "one skill, three directions" composition.
+.branch-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 8px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+}
+
+.branch-split__item {
+  padding-top: 28px;
+  border-top: 2px solid var(--clr-brand-border);
+
+  @media (min-width: 900px) {
+    padding: 32px 28px 0;
+    border-left: 1px solid var(--clr-brand-border);
+
+    &:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.branch-split__number {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--clr-brand-cyan);
+}
+
+.branch-split__title {
+  margin: 0 0 10px;
+  font-weight: 800;
+  color: var(--clr-brand-navy);
+  font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.75rem);
+}
+
+.branch-split__desc {
+  margin: 0 0 16px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--clr-brand-slate);
+}
+
+// Profile split — Trainer's editorial identity + bio composition.
+.profile-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+
+  @media (min-width: 860px) {
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+  }
+}
+
+.profile-split__identity {
+  padding: 28px 24px;
+  text-align: center;
+  background-color: var(--clr-brand-ivory);
+  border: 1px solid var(--clr-brand-border);
+  border-radius: var(--radius-lg);
+
+  @media (min-width: 860px) {
+    text-align: left;
+  }
+}
+
+.profile-split__monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 16px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--clr-brand-white);
+  background-color: var(--clr-brand-blue);
+  border-radius: 50%;
+
+  @media (min-width: 860px) {
+    margin: 0 0 16px;
+  }
+}
+
+.profile-split__name {
+  margin: 0 0 4px;
+  font-weight: 800;
+  color: var(--clr-brand-navy);
+  font-size: clamp(1.3rem, 1.15rem + 0.5vw, 1.625rem);
+}
+
+.profile-split__role {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--clr-brand-blue);
+}
+
+// Pull quote — a manifesto-style statement, distinct from .content-cta so
+// an authority page (Trainer) doesn't end with the same "buy now" box as
+// every conversion page.
+.pull-quote {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pull-quote__eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clr-brand-cyan);
+}
+
+.pull-quote__statement {
+  margin: 0 0 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--clr-brand-white);
+  font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
+}
+
+.pull-quote__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+// FAQ category grouping.
+.faq-group + .faq-group {
+  margin-top: 40px;
+}
+
+.faq-group__title {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--clr-brand-blue);
 }
 
 // Trainer expertise tags — reuses the Programs section's pill pattern.

@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
+import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
 
 const steps = [
   { title: "Enquire", desc: "Tell us about yourself and what you want to learn." },
@@ -28,15 +32,23 @@ const AdmissionsPageMain = () => {
           <div className="content-section__head">
             <h2 className="content-section__title">How It Works</h2>
           </div>
-          <ol className="why__grid">
+          <ol className="stage-rail stage-rail--horizontal">
             {steps.map((step, i) => (
-              <li className="why__block" key={step.title}>
-                <span className="why__block-number" aria-hidden="true">
+              <motion.li
+                className="stage-rail__step"
+                key={step.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+                variants={fadeUp}
+                transition={revealTransition(i * 0.1)}
+              >
+                <span className="stage-rail__step-number" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="why__block-title">{step.title}</span>
-                <span className="why__block-desc">{step.desc}</span>
-              </li>
+                <span className="stage-rail__step-title">{step.title}</span>
+                <span className="stage-rail__step-desc">{step.desc}</span>
+              </motion.li>
             ))}
           </ol>
         </div>

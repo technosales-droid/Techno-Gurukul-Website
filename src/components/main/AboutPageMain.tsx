@@ -1,4 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
 import MainLayout from "@/components/layout/MainLayout";
+import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
+
+/**
+ * The three "Our Belief / Our Vision / Where We're Going" blocks,
+ * restructured as sequential narrative chapters on the shared stage-rail
+ * (vertical only — a reading flow, not parallel steps). Content unchanged.
+ */
+const chapters = [
+  {
+    eyebrow: "Our Belief",
+    title: "Skills Are Built Through Practice.",
+    desc: "You can watch someone create an advertisement. You can read about SEO. You can learn what a conversion funnel is. But you understand them differently when you actually have to create one. That's why practical execution sits at the centre of our learning philosophy.",
+  },
+  {
+    eyebrow: "Our Vision",
+    title: "Building Skills For The Digital Economy.",
+    desc: "We began with digital marketing because businesses across industries increasingly need people who understand digital customer acquisition, content, technology and performance. Our larger vision is to build a skill-focused institution around emerging technology disciplines.",
+  },
+  {
+    eyebrow: "Where We're Going",
+    title: "Digital Marketing is our starting point.",
+    desc: "The larger TechnoGurukul ecosystem can extend into emerging areas such as:",
+    disciplines: ["Data Science & Analytics", "Cybersecurity", "Blockchain & Web3"],
+  },
+];
 
 const AboutPageMain = () => {
   return (
@@ -24,49 +52,31 @@ const AboutPageMain = () => {
 
       <section className="content-section">
         <div className="container">
-          <div className="content-block">
-            <span className="content-block__eyebrow">Our Belief</span>
-            <h2 className="content-block__title">
-              Skills Are Built Through Practice.
-            </h2>
-            <p className="content-block__desc">
-              You can watch someone create an advertisement. You can read
-              about SEO. You can learn what a conversion funnel is. But you
-              understand them differently when you actually have to create
-              one. That&apos;s why practical execution sits at the centre of
-              our learning philosophy.
-            </p>
-          </div>
-
-          <div className="content-block">
-            <span className="content-block__eyebrow">Our Vision</span>
-            <h2 className="content-block__title">
-              Building Skills For The Digital Economy.
-            </h2>
-            <p className="content-block__desc">
-              We began with digital marketing because businesses across
-              industries increasingly need people who understand digital
-              customer acquisition, content, technology and performance. Our
-              larger vision is to build a skill-focused institution around
-              emerging technology disciplines.
-            </p>
-          </div>
-
-          <div className="content-block">
-            <span className="content-block__eyebrow">Where We&apos;re Going</span>
-            <h2 className="content-block__title">
-              Digital Marketing is our starting point.
-            </h2>
-            <p className="content-block__desc">
-              The larger TechnoGurukul ecosystem can extend into emerging
-              areas such as:
-            </p>
-            <ul className="content-list">
-              <li>Data Science &amp; Analytics</li>
-              <li>Cybersecurity</li>
-              <li>Blockchain &amp; Web3</li>
-            </ul>
-          </div>
+          <ol className="stage-rail">
+            {chapters.map((chapter, i) => (
+              <motion.li
+                className="stage-rail__step"
+                key={chapter.eyebrow}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+                variants={fadeUp}
+                transition={revealTransition(i * 0.12)}
+              >
+                <span className="stage-rail__step-number">{String(i + 1).padStart(2, "0")}</span>
+                <span className="stage-rail__step-eyebrow">{chapter.eyebrow}</span>
+                <h2 className="content-block__title">{chapter.title}</h2>
+                <p className="content-block__desc">{chapter.desc}</p>
+                {chapter.disciplines && (
+                  <ul className="tag-list">
+                    {chapter.disciplines.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </section>
 
