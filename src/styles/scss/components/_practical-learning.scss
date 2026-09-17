@@ -64,29 +64,24 @@ temporary, layout-stable placeholder (see PracticalLearningSection.tsx).
   &__points {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     margin: 24px 0 0;
     padding: 0;
     list-style: none;
 
     li {
-      position: relative;
-      padding-left: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 15.5px;
       font-weight: 600;
       color: var(--clr-brand-ink);
-
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.5em;
-        width: 8px;
-        height: 8px;
-        border-radius: 2px;
-        background-color: var(--clr-brand-blue);
-      }
     }
+  }
+
+  &__point-icon {
+    flex-shrink: 0;
+    color: var(--clr-brand-blue);
   }
 
   &__visual {

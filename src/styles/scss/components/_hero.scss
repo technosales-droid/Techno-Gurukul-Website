@@ -3,8 +3,12 @@
 Homepage hero. TechnoGurukul-specific: real approved copy, an original
 node/network graphic (echoes the logo's canopy motif, not a copy of
 it), no stock "person with laptop" imagery, no floating decorative
-cards. Deliberately has zero animation — nothing here should delay a
-first-time visitor understanding what TechnoGurukul is.
+cards. Entrance motion is a single fast (~450ms) fade/slide, content
+then visual — quick enough not to delay comprehension, see
+HeroSection.tsx for the Framer Motion wiring. A few of the graphic's
+existing nodes carry a slow ambient CSS pulse (below); both respect
+prefers-reduced-motion (Framer via MotionConfig in MainLayout, this
+CSS via the global override in _common.scss).
 *************************
 */
 @use "../abstracts/mixins" as *;
@@ -105,6 +109,23 @@ first-time visitor understanding what TechnoGurukul is.
     display: block;
     width: 100%;
     height: 100%;
+  }
+
+  &__graphic-pulse {
+    animation: hero-node-pulse 3.6s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+}
+
+@keyframes hero-node-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.35);
   }
 }
 

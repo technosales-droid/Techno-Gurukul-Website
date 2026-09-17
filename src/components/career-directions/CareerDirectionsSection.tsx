@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, fadeScale, viewportOnce, revealTransition } from "@/components/utils/motion";
+
 const paths = [
   {
     name: "Get Hired",
@@ -26,10 +31,15 @@ const CareerDirectionsSection = () => {
     <section className="career">
       <div className="container">
         <div className="career__grid">
-          <div
+          <motion.div
             className="career__visual"
             role="img"
             aria-label="Placeholder for a future photo: students collaborating on a real digital marketing project"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeScale}
+            transition={revealTransition(0)}
           >
             <span className="career__visual-label">Image Placeholder</span>
             <span className="career__visual-dims">1080 × 1350 px</span>
@@ -38,12 +48,26 @@ const CareerDirectionsSection = () => {
               Suggested image: students collaborating on a real digital
               marketing project
             </span>
-          </div>
+          </motion.div>
 
-          <div className="career__content">
-            <span className="career__ghost-number" aria-hidden="true">
+          <motion.div
+            className="career__content"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            transition={revealTransition(0.08)}
+          >
+            <motion.span
+              className="career__ghost-number"
+              aria-hidden="true"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={viewportOnce}
+              transition={revealTransition(0.2)}
+            >
               3
-            </span>
+            </motion.span>
             <span className="career__eyebrow">Career Options</span>
             <h2 className="career__title">One Skill. Three Directions.</h2>
 
@@ -55,7 +79,7 @@ const CareerDirectionsSection = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -11,6 +11,8 @@ a generic 4-step icon grid.
 @use "../abstracts/variables" as *;
 
 .approach {
+  position: relative;
+  overflow: hidden;
   background-color: var(--clr-brand-navy);
   padding: 64px 0;
 
@@ -19,6 +21,26 @@ a generic 4-step icon grid.
   }
   @media (min-width: 1200px) {
     padding: 128px 0;
+  }
+
+  // Subtle line-texture layer, sourced from the Asset Library
+  // (elegant-blue-flowing-line-background-collection) — kept as a
+  // low-opacity decorative backdrop behind the solid navy fill, never
+  // load-bearing for contrast on its own.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/img/backgrounds/approach-line-texture.svg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.14;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
   }
 
   &__head {

@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeUp, fadeScale, viewportOnce, revealTransition } from "@/components/utils/motion";
 
 /**
  * Abstract node/network graphic — an original echo of the logo's
  * circuit-canopy motif, not a crop of the logo file itself. Purely
- * decorative, so it's hidden from assistive tech.
+ * decorative, so it's hidden from assistive tech. A few of its nodes
+ * carry a slow, continuous CSS opacity pulse (`.hero__graphic-pulse`,
+ * see _hero.scss) — ambient motion on existing art, no new decoration.
  */
 const HeroGraphic = () => (
   <svg
@@ -40,15 +46,15 @@ const HeroGraphic = () => (
     </g>
 
     <g fill="#08B9D9">
-      <circle cx="214" cy="96" r="6" />
+      <circle cx="214" cy="96" r="6" className="hero__graphic-pulse" style={{ animationDelay: "0s" }} />
       <circle cx="96" cy="142" r="5" />
-      <circle cx="314" cy="134" r="6" />
+      <circle cx="314" cy="134" r="6" className="hero__graphic-pulse" style={{ animationDelay: "0.6s" }} />
       <circle cx="92" cy="146" r="4" />
       <circle cx="334" cy="214" r="5" />
     </g>
     <g fill="#5EA8EC">
       <circle cx="200" cy="260" r="5" />
-      <circle cx="206" cy="168" r="6" />
+      <circle cx="206" cy="168" r="6" className="hero__graphic-pulse" style={{ animationDelay: "1.2s" }} />
       <circle cx="162" cy="282" r="5" />
       <circle cx="240" cy="284" r="5" />
       <circle cx="282" cy="206" r="5" />
@@ -63,12 +69,32 @@ const HeroGraphic = () => (
   </svg>
 );
 
+/** Small nudge-on-hover arrow for `.theme-btn-arrow` (see _button.scss). */
+const ArrowIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="theme-btn-arrow__icon">
+    <path
+      d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const HeroSection = () => {
   return (
     <section className="hero">
       <div className="container">
         <div className="hero__grid">
-          <div className="hero__content">
+          <motion.div
+            className="hero__content"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            transition={revealTransition(0)}
+          >
             <span className="hero__eyebrow">
               Practical Digital Marketing Academy <span aria-hidden="true">·</span> Nashik
             </span>
@@ -89,18 +115,26 @@ const HeroSection = () => {
             </p>
 
             <div className="hero__actions">
-              <Link href="/programs" className="theme-btn theme-btn-amber theme-btn-big">
+              <Link href="/programs" className="theme-btn theme-btn-amber theme-btn-big theme-btn-arrow">
                 Explore the Program
+                <ArrowIcon />
               </Link>
               <Link href="/contact" className="theme-btn theme-btn-outline theme-btn-big">
                 Enquire Now
               </Link>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="hero__visual">
+          <motion.div
+            className="hero__visual"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeScale}
+            transition={revealTransition(0.08)}
+          >
             <HeroGraphic />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

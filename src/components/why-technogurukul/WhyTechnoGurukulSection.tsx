@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
+
 const points = [
   {
     title: "Real Client Exposure",
@@ -42,13 +47,21 @@ const WhyTechnoGurukulSection = () => {
 
         <ol className="why-strip">
           {points.map((point, i) => (
-            <li className="why-strip__item" key={point.title}>
+            <motion.li
+              className="why-strip__item"
+              key={point.title}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={fadeUp}
+              transition={revealTransition(i * 0.08)}
+            >
               <span className="why-strip__badge" aria-hidden="true">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="why-strip__title">{point.title}</span>
               <span className="why-strip__desc">{point.desc}</span>
-            </li>
+            </motion.li>
           ))}
         </ol>
       </div>

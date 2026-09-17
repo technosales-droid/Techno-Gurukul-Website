@@ -1,16 +1,25 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, viewportOnce, revealTransition } from "@/components/utils/motion";
+import CountUp from "@/components/utils/CountUp";
+
 const stats = [
   {
-    value: "60%",
+    value: 60,
+    suffix: "%",
     label: "Doing",
     desc: "Live campaigns, live projects, content, analysis, execution.",
   },
   {
-    value: "25%",
+    value: 25,
+    suffix: "%",
     label: "Thinking",
     desc: "Strategy, consumer psychology, marketing principles, problem-solving.",
   },
   {
-    value: "15%",
+    value: 15,
+    suffix: "%",
     label: "Tools & Theory",
     desc: "Platforms, technology, frameworks and professional knowledge.",
   },
@@ -41,12 +50,24 @@ const ApproachSection = () => {
         </div>
 
         <ol className="approach__stats">
-          {stats.map((stat) => (
-            <li className="approach__stat" key={stat.label}>
-              <span className="approach__stat-value">{stat.value}</span>
+          {stats.map((stat, i) => (
+            <motion.li
+              className="approach__stat"
+              key={stat.label}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={fadeUp}
+              transition={revealTransition(i * 0.1)}
+            >
+              <CountUp
+                value={stat.value}
+                suffix={stat.suffix}
+                className="approach__stat-value"
+              />
               <span className="approach__stat-label">{stat.label}</span>
               <span className="approach__stat-desc">{stat.desc}</span>
-            </li>
+            </motion.li>
           ))}
         </ol>
       </div>

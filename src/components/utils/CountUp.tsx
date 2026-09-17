@@ -85,7 +85,7 @@ const CountUp = ({
 
   return (
     <h3 ref={elementRef} className={className}>
-      <span className={spanClassName}> {formatNumber(currentValue)}</span>
+      <span className={spanClassName}>{formatNumber(currentValue)}</span>
       <span>{suffix}</span>
     </h3>
   );
